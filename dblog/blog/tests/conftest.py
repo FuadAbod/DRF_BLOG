@@ -9,8 +9,8 @@ def create_post_data(db):
     tag_1= Tag.objects.create(name="Current Trend")
     tag_1.save()
 
-    author_1 = User(username="j", email="j@gmail.com")
-    author_2 = User(username="m", email="m@gmail.com")
+    author_1 = User.objects.create(username="j", email="j@gmail.com")
+    author_2 = User.objects.create(username="m", email="m@gmail.com")
     author_1.save()
     author_2.save()
     
@@ -21,6 +21,6 @@ def create_post_data(db):
 
     first_post.tags.add(tag_1)
     second_post.tags.add(tag_1)
-    
+  
     return first_post, second_post
     

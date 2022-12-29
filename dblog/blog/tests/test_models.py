@@ -2,16 +2,13 @@
 from blog.models import Post, Tag
 import pytest
 from conftest import create_post_data
+
 def test_no_post(db):
     assert Post.objects.count() == 0
 
-def test_post(db,create_post_data):
-    data= create_post_data[0]
-
-    # assert create_post_data.objects.count() == 2
-#     assert Post_creation.objects.active.count() == 1
-#     assert Post_creation.objects.inactivet.count() == 1
-
-# def test_no_tag():
-#     assert Tag.objects.count == 0
-#     assert Tag.objects.count() == 1
+def test_post(db, create_post_data):
+    post_obj = Post.objects.all().values()
+    assert post_obj.count() == 2
+    assert post_obj[0] == {'id': 1, 'title': 'LOTR', 'text': 'Active', 'author_id': 1, 'image': ''}
+    assert post_obj[1] == {'id': 2, 'title': 'GOT', 'text': 'Inactive', 'author_id': 2, 'image': ''}
+ 
