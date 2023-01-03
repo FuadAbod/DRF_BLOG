@@ -3,7 +3,7 @@ from unittest.mock import MagicMock
 import pytest
 from blog.models import Tag
 from django.contrib.auth.models import User
-
+from rest_framework.test import APIClient
 @pytest.fixture
 def create_post_data(db):
     tag_1= Tag.objects.create(name="Current Trend")
@@ -21,6 +21,10 @@ def create_post_data(db):
 
     first_post.tags.add(tag_1)
     second_post.tags.add(tag_1)
-  
+
     return first_post, second_post
-    
+
+@pytest.fixture
+def create_api_connection():
+    client = APIClient()
+    return client
