@@ -11,5 +11,5 @@ class Post(models.Model):
     text = models.TextField()
     tags = models.ManyToManyField(Tag, related_name='posts', blank=True)
     author = models.ForeignKey(User, related_name='posts', on_delete=models.CASCADE, blank=True, null=True)
-    image = models.ImageField(null=True, blank=True)
+    image = models.ImageField(null=True, blank=True, default="dblog/IMG_0215.png")
     
